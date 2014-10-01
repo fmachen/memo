@@ -22,3 +22,7 @@ Valider un fichier XML
 * avec du RelaxNG
 
 `xmllint data.xml --relaxng RNGnotice.rng --noout`
+
+Shell interactif pour naviguer dans le fichier
+
+`xmllint --shell data.xml`
