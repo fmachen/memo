@@ -5,6 +5,10 @@ Indenter un fichier
 
 `xmllint data.xml --format`
 
+Indenter un fichier via vim
+
+`:%!xmllint --format -`
+
 Valider un fichier XML
 
 * contenant une DTD
@@ -26,3 +30,4 @@ Valider un fichier XML
 Shell interactif pour naviguer dans le fichier
 
 `xmllint --shell data.xml`
+
