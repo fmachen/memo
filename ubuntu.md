@@ -1,3 +1,10 @@
+## Enter SSH passphrase once 
+
+```
+ssh-agent bash
+ssh-add /home/username/.ssh/id_rsa
+```
+
 ## Switch ubuntu to kubuntu
 
 ```
