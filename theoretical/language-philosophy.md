@@ -2,7 +2,7 @@
 
 ## python
 
-resumed by PEP-20 [](https://www.python.org/dev/peps/pep-0020/)
+resumed by [PEP-20](https://www.python.org/dev/peps/pep-0020/)
 
 ```
     Beautiful is better than ugly.
