@@ -76,3 +76,6 @@ Reflecting on the past is only good for one thing: Learning.
 Don’t just sit there, do something. Without action, there is no outcome.
 
 [25 Things About Life I Wish I Had Known 10 Years Ago by DARIUS FOROUX](https://medium.com/life-learning/25-things-about-life-i-wish-i-had-known-10-years-ago-61d96e93a028#.r44trmjxq)
+
+## Texting is Better Than Calling
+Shorter, Faster, Searchable
