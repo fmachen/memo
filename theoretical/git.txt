@@ -1,0 +1,337 @@
+====== Git - formation septembre ======
+
+Une aide en cas de détresse : {{:themes:git:git-pretty.png?direct&100|}}
+===== Questions à poser =====
+  * Comment alléger un .git en supprimant l'historique à partir d'une certaine date ?
+<code bash>git repack</code>
+  * Comment faire fonctionner la commande "update_server_info" en automatique (post-hook) ?
+    => Utiliser un serveur (Gitosis ou Gitolite par exemple) ou tout simplement écrire un script shell qui fait "git pull;git update-server-info".
+  * Comment avoir un fichier en dev mais pas en master (en faisant régulièrement des merge) ?
+    => Utiliser le fichier « .gitignore ». Si le fichier est déjà dans l'index, le .gitignore ne sert à rien, il faut le supprimer de l'index via un « git rm --cached »)
+  * Comment ne pas perdre des fichiers ignorés lors d'un git pull (ex : conf.local.ini) ?
+
+===== Webographie Christophe Porteneuve =====
+* Le blog GitHub :
+    https://github.com/blog
+
+  * L'aide GitHub est une mine d'infos pas seulement sur eux :
+
+    Using Git :
+    https://help.github.com/categories/19/articles
+
+    Advanced Git :
+    https://help.github.com/categories/52/articles
+
+    Managing Remotes (fetch/push asymétriques, etc.) :
+    https://help.github.com/categories/18/articles
+
+    Importer depuis SVN :
+    https://help.github.com/categories/67/articles
+
+    Les gists :
+    https://help.github.com/categories/23/articles
+
+    Tout savoir sur les pull requests :
+    https://help.github.com/categories/63/articles
+
+  * Git Attitude, qui reprend le flux de ses articles de fond, à raison
+    de 1 par mois.  Annoncé sur Twitter (@gitattitude) et dans les flux
+    RSS/Atom du site.
+
+
+http://www.git-attitude.fr/2014/05/04/bien-utiliser-git-merge-et-rebase/
+    http://www.git-attitude.fr/2014/08/28/git-evolutions-recentes/
+
+
+Maîtriser SublimeText
+---------------------
+
+Si SublimeText vous dit et que vous souhaitez devenir performants
+rapidement, je ne saurais trop vous recommander cette excellente série
+gratuite de screencasts :
+
+
+http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/
+
+Les Pragmatic Programmers ont un screencast payant qui apporte sans
+doute quelques compléments :
+
+  http://pragprog.com/screencasts/v-mrst2/sublime-text-2
+
+Et de mon côté j'ai écrit ceci, qui rencontre un franc succès :
+
+
+http://www.js-attitude.fr/2013/03/12/sublime-text-dev-web-config-trucs-astuces/
+
+
+===== Notes =====
+==== Règles ====
+  * Première chose à faire : Configurer le .gitignore (voir [[http://www.gitignore.io/]])
+  * Toujours faire un "git status" avant de faire un commit !
+
+==== Une bonne config ====
+
+Dans le fichier ~/.gitconfig : 
+
+<code ini>
+[user]
+name = Ton Nom
+email = ton@email.tld
+[color]
+ui = auto
+[alias]
+st = status
+ci = commit
+lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+[core]
+pager = cat
+#
+# Out of luck: on Windows w/o msysGit? You may have Notepad++…
+# editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+#
+# If you want to use Sublime Text 2's subl wrapper:
+# editor = subl -w
+#
+whitespace = -trailing-space
+[diff]
+mnemonicPrefix = true
+wordRegex = .
+[fetch]
+recurseSubmodules = on-demand
+[grep]
+extendedRegexp = true
+[log]
+abbrevCommit = true
+[merge]
+conflictStyle = diff3
+[mergetool]
+keepBackup = false
+keepTemporaries = false
+prompt = false
+[pull]
+# This is GREAT… when you know what you're doing and are careful
+# not to pull --no-rebase over a local line containing a true merge.
+# rebase = true
+# WARNING! This option, which does away with the one gotcha of
+# auto-rebasing on pulls, is only available from 1.8.5 onwards.
+rebase = preserve
+[push]
+default = upstream
+[rerere]
+# If, like me, you like rerere, decomment these
+# autoupdate = true
+# enabled = true
+[status]
+submoduleSummary = true
+showUntrackedFiles = all
+</code>
+
+Notes :
+  * la configuration est modifiable via la commande //git config//
+  * 3 niveaux de configuration :
+    * -local : au niveau du dépôt
+    * -global : au niveau du compte utilisateur (.gitconfig dans /home/user)
+    * -system : au niveau système (dans /etc)
+==== Un bon prompt (Linux) ====
+
+Dans le fichier ~/.bashrc :
+<code bash>
+# J'ai du ajouter la ligne suivante pour surcharger le prompt par défaut
+# fourni par le paquet Debian Git --- //[[pierre.dittgen@pass-tech.fr|Pierre Dittgen]] 2014/09/15 13:30//)
+unset PROMPT_COMMAND
+
+export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=verbose GIT_PS1_DESCRIBE_STYLE=branch GIT_PS1_SHOWCOLORHINTS=1
+
+export GIT_MERGE_AUTOEDIT=no
+
+export PS1='\[\e[0;36m\]\u@\h:\[\e[0m\e[0;32m\]\W\[\e[1;33m\]$(__git_ps1 " (%s)")\[\e[0;37m\] \$ \[\e[0m\]'
+</code>
+
+Signification des caractères :
+  * # : Racine master sans commit
+  * % : Untracked
+  * * : Modified
+  * + : Écart entre head et stage => des choses dans le stage
+  * $ : Un stash existe
+
+==== Stash ====
+Sauvegarder l'état courant temporairement, faire une tâche urgente et se remettre à son travail
+<code bash>
+# Sauvegarder l'état courant
+git stash save -u "message"
+
+# On travaille sur la tâche urgente
+# On commit 
+
+# On revient sur la tâche en cours
+git stash pop --index
+</code>
+
+Pour voir les sauvegardes en cours !
+<code bash>
+git stash list
+</code>
+
+==== Reset ====
+
+^ Mode \ Impact ^ HEAD ^ index (stage) ^ WD ^
+| --soft |  V  | | |
+| [ --mixed ] |  V  |  V  | |
+| --hard |  V  |  V  |  V  |
+
+Suppression des modifications en cours sur HEAD :
+<code bash>
+git reset --hard
+</code>
+
+Suppression des fichiers //untracked// :
+<code bash>
+git clean -f
+</code>
+
+
+==== Commit ====
+
+Commit partiel
+<code bash>
+git add -i
+</code>
+
+One-line
+<code bash>
+git commit -am "Mon message"
+</code>
+
+Refaire le dernier commit
+<code bash>
+# On change ce qui doit l'être
+
+# On modifie le dernier commit
+git commit --amend
+</code>
+
+==== Recherche / Visualisation de modifs ====
+
+Pour voir le diff entre le staged et le WD : 
+<code bash>git diff</code>
+
+Pour voir le diff entre le staged et le head : 
+<code bash>git diff --staged</code>
+
+Pour voir le fichier staged :  
+<code bash>git show :0:index.html</code>
+
+Pour voir ce qui s'est passé : <code bash>git diff --stat '@{6 months ago}' [ chemin - ou pas ]</code>
+
+Plus en détail : <code bash>git diff --dirstat=2 '@{6 months ago}'</code>
+
+Pour ignorer les changements d'indentations : <code bash>git diff -w</code>
+
+Pour afficher les modifs plus précisément : <code bash>git diff --word-diff</code>
+
+Pour rechercher dans les messages de commit : <code bash>git lg --grep="…"</code>
+
+Chercher qui a modifié une ligne : 
+  * Uniquement ajout ou retrait : <code bash>git lg -p -S footer </code>
+  * Uniquement ajout ou retrait avec une regex : <code bash>git lg -p -S 'regex' --pickaxe-regex</code>
+  * Même si déplacement : <code bash>git lg -p -G 'regex'</code>
+
+Voir la version du fichier d'il y a 2 commits : <code bash>git show HEAD~2:monfichier</code>
+
+Voir ce qui s'est passé dans chacune des branches lors d'un conflit de merge :
+<code bash>git log --merge -p [Fichier] --reverse</code>
+
+Pour chercher toutes les branches qui contiennent un certain commit (pratique pour trouver où appliquer un bugfix) :
+<code bash>git branch --contains [SHA]</code>
+
+Branches non fusionnées : <code bash>git branch --no-merged</code>
+
+==== Branches ====
+Création de branche
+<code bash>
+# On crée la branche
+git branch {branche}
+
+# On crée la branche et on se positionne dessu
+git checkout -b branch
+</code>
+
+Suppression de branche
+<code bash>
+git branch -d {branche}
+</code>
+
+Lister les branches remote
+<code bash>
+git branch -r
+</code>
+
+Lister toutes les branches
+<code bash>
+git branch -a
+</code>
+
+
+==== Fusion ====
+Empêcher le fast-forward pour créer une bosse intentionnellement :
+<code bash>
+git merge --no-ff {branch}
+</code>
+
+Annuler tout ce qui s'est passé lors du merge : <code bash>git merge --abort</code>
+
+==== Syntaxe de révision ====
+
+  * ^ : caret, le parent main line = ~1
+  * ^^ : le parent du parent = ~2
+  * ~n : le n ème parent
+  * ^n : la nième branche (uniquement pour un commit de fusion)
+  * @{n} : 
+    * si n > 0 remonte dans les reflog local sur notre machine
+    * si n < 0 affiche le journal des HEAD (donc local), pour savoir sur quelle branche il se trouve
+    * si n est une date, on utilise le log publique
+  * HEAD : tête de branche courant
+  * ORIG_HEAD : position avant le HEAD, HEAD@{1}
+(au chgmt de branche @{1} et @{-1} sont la même chose)
+==== amend ====
+
+Si au commit précédent on a oublié un fichier
+
+<code bash>
+git add filePath
+git commit --amend --no-edit
+</code>
+
+Si au commit précédent on commité un fichier en trop
+
+<code bash>
+git rm --cached filePath
+git commit --amend --no-edit
+</code>
+
+En fait, on met le stage comme voulu et on commit avec --amend
+
+==== Créer une branche depuis un commit passé ====
+
+On travaille, puis on se rend compte que c'est compliqué ... On aurait du faire une brache il y a quelques commit.
+
+Au final, le commit actuel dois être le nouvelle branche ... donc on crée la nouvelle branche ici, on déplace le HEAD de master en arrière, on va se positionner sur la nouvelle branche une fois le master derrière
+
+<code bash>
+git branch dev
+git reset –soft HEAD~3
+git checkout dev
+</code>
+
+==== Une histoire de bosse ====
+
+Quand on merge, parfois ça fait des bosses ... parfois non. C'est à nous de choisir si l'on souhaite voir la branche ... ou pas (pas git qui doit nous l'imposer).
+
+  * On est sur master, on souhaite faire un merge de toto et master n'a pas bougé depuis la création de toto. Dans ce cas le merge va se faire en fast-forward, on ne verra pas la bosse : <code bash>git merge toto</code>
+  * On est sur master, on souhaite faire un merge de toto et master n'a pas bougé depuis la création de toto. Cependant on souhaite voir la bosse car toto c'est vraiment important, on merge sans fast-forward : <code bash>git merge --no-ff toto</code>
+  * On est sur toto, on souhaite envoyer les modifs à master (qui à bougé ou pas) sans faire de bosse. On demande à git de rejouer les commit sur master via rebase : <code bash>git rebase master</code>
+  * On est sur master, on souhaite prendre un commit sur une autre branch et le rejouer sans prendre tous les commit : <code bash>git cherry-pick commit</code>
+  * Afin de conserver les bosses des autres, un git pull avec l'option pull.rebase = preserve pour conserver les branches créées volontairement.
+===== Outils =====
+[[http://ndpsoftware.com/git-cheatsheet.html]]
