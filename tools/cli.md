@@ -27,3 +27,21 @@ Partition swap : `swapon -s`
 Machine (noyau, nom de machine...) : `uname -a`
 
 Informations de fonctionnement : `uptime`, `top`, `ps`, `who`, `vmstat` ...
+
+## download images website
+
+```
+wget -r -linf -k -p -E -H -np -A.jpg http://www.onemanga.com/Tales_of_Symphonia/
+```
+   
+## extract sound of video
+
+```
+ffmpeg -i inputfile.flv -acodec copy output.mp3
+```
+
+## merge multiple pdf
+
+```
+ghostscript -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sPAPERSIZE=a4 -sOutputFile=resultat.pdf fichier1.pdf fichier2.pdf fichier3.pdf fichier4.pdf
+```
