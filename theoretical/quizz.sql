@@ -24,7 +24,7 @@ FROM tbl
 WHERE a = ? AND b = ?
 SELECT id, a, b
 FROM tbl
-WHERE AND b = ?
+WHERE b = ?
 
 Second query can't use index so 1 => 0.055ms, 2 => 29.849
 Change the index to (b, a) and 1 => 0.056ms, 2 => 6.932
