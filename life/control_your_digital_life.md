@@ -25,9 +25,11 @@
 - Regarder l'excellent documentaire [Do Not Track](https://donottrack-doc.com/fr/episode/1)
 - Téléchargez librement et gratuitement : [reprendre le contrôle sur Framabook](http://framabook.org/numerique-reprendre-le-controle/)
 - Limitez la collecte de données. [Google activity](https://myactivity.google.com/myactivity)
-- [surveillance://](http://cfeditions.com/surveillance/)
+- Lire [surveillance://](http://cfeditions.com/surveillance/)
 - Allez voir l'excellent biopic sur Edward [Snowden](https://www.youtube.com/watch?v=QlSAiI3xMh4)
 
 - Découvrez quel accès à vos données vous laissez aux services que vous utilisez [my permissions](https://mypermissions.com/)
+
+# Source
 
 > https://www.myadvent.net/calendars/?id=60a3f8cf02141a43ec6efbd8a76a02a6
