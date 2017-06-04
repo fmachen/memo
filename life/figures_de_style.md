@@ -1,0 +1,29 @@
+
+- hyperhypotaxe : gaver sa phrase de subordonnées
+- litote : renforce "il ne se leve pas du lit tôt" == "se lever tard"
+- euphemisme : atténue "un bon petit film" == "un film génial"
+- hyperbole : inverse de l'euphemisme, on en fait des caisses pour peu "t'en veux encore ? non j'ai déjà un hyper bol" 
+- gradation : on en fait de plus en plus des caisses "roc, pic, cap ... péninsule"
+- assonance : répétition d'une voyelle
+- allitération : répétition d'une consonne "à qui sont c'est serpent ..."
+- anaphore : répété un élément en début de phrase pour insister
+- chiasme : A B B' A' "
+- comparaison : comparé et comparant via un outil de comparaison "tu as l'air d'être ailleurs"
+- métaphore : comparé et comparant sans outil de comparaison "tu as la tête ailleurs"
+- métonymie : remplacer A par B en comptant sur le lien logique pour la compréhension "tu veux boire un verre ?" == "contenu du verre"
+- synecdoque : métonymie particulère ou A et B on une relation d'inclusion "Mais les français en ont marres ..."
+- antithèse : deux éléments contraires ensemble 
+- oxymore : deux éléments contraires ensemble d'un même groupe "une obscure clarté"
+- pléonasme : dire deux éléments qui vont dans le même sens "marche a pied" "vu de mes yeux" "beau dehors" "tri sélectif"
+- enallage : faute de grammaire volontaire "je suis colère" "chanter faux"
+- prétérition : dire qu'on ne va pas dire quelque chose tout en le disant "je ne vais pas vous dire que ..."
+- homéotéleute : répéter la même syllabe en fin de mot (des rhymes par exemple)
+- epanadiplose : finir une proposition par le même mot/groupe de mots qui l'a commencé
+- epizeuxe : répéter un mot ou groupe de mot "voyage voyage"
+- mot-valise : mot composé de deux mots "salameche"
+- prosopoppé : faire parlé ce qui ne parle pas (par exemple une poupé =>prosopoppé  | animaux dans les fables de la fontaine)
+- anacoluthe : rupture dans la construction de la phrase ce qui fait que le début et la fin de la phrase ne colle pas "le nez de cléopatre, s'il eu été plus court, la face de la terre en aurait été changée" "Veuillez agréer, Madame/Monsieur, l'expression de mes sentiments distingués"
+- zeugma : lier deux propositions qui n'ont rien a voir en les liant par un mot commun "j'ai découvert son univers, et elle, ses épaules"
+- antanaclase : similaire au zeugma, repete le même mot dans deux sens différents "le coeur a ces raisons que la raison ne connait point"
+- antonomase : utiliser un nom commun comme nom propre ou nom propre comme nom commun "frigo != frigidaire"
+- métalepse : forme de métonymie ou A et B on une relation de cause conséquence "pourquoi X n'est pas au bureau ce matin ? parce qu'il a trop bu hier soir"
